@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyPickup : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("Drag the SlidingDoor GameObject here in the Inspector.")]
+    [Tooltip("The SlidingDoor GameObject. ")]
     public SlidingDoor linkedDoor;
 
     [Header("Settings")]
@@ -16,7 +16,7 @@ public class KeyPickup : MonoBehaviour
     public KeyCode pickupKey = KeyCode.E;
 
     [Header("Optional UI")]
-    [Tooltip("Optional: a UI prompt to show when player is nearby (e.g. '[E] Pick up').")]
+    [Tooltip("Optional: a UI prompt to show when player is nearby.")]
     public GameObject promptUI;
 
     private bool _playerNearby = false;
