@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerHealth playerHealth;
 
-        
+    [Header("Settings")]
+
+    [Tooltip("Key the player must press to die.")]
+    public KeyCode deathKey = KeyCode.R;
+
     public CharacterController2D Controller;
     float HorizonatalMove = 0f;
     public float RunSpeed =40f ;
@@ -13,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -25,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+        }
+        if (Input.GetKeyDown(deathKey))
+        {
+            playerHealth.Die();
         }
     }
 

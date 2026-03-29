@@ -12,16 +12,24 @@ public class PlayerHealth : MonoBehaviour
     public bool useRespawnPoint = false;
     public Transform respawnPoint;
 
+    [Header("Death Body")]
+    [Tooltip("Prefab to spawn as a corpse when the player dies. Should have a Rigidbody2D so it inherits momentum.")]
+    public GameObject deathBodyPrefab;
+    [Tooltip("How much of the player's velocity the body inherits on death.")]
+    [Range(0f, 2f)]
+    public float bodyMomentumMultiplier = 1f;
+
     [Header("Invincibility Frames")]
     [Tooltip("Seconds of invincibility after taking damage (prevents rapid multi-hits).")]
     public float invincibilityDuration = 0.5f;
 
     [Header("Visual Feedback (optional)")]
-    [Tooltip("SpriteRenderer to flash when hurt.")]
+    [Tooltip("SpriteRenderer to flash when hurt. Leave empty to skip.")]
     public SpriteRenderer spriteRenderer;
 
     public int CurrentHealth { get; private set; }
     private bool _isInvincible = false;
+    private Rigidbody2D _rb;
 
     private void Awake()
     {
@@ -29,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(int amount)
@@ -39,13 +49,9 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"[PlayerHealth] Took {amount} damage. Health: {CurrentHealth}/{maxHealth}");
 
         if (CurrentHealth <= 0)
-        {
             Die();
-        }
         else
-        {
             StartCoroutine(InvincibilityRoutine());
-        }
     }
 
     public void Die()
@@ -55,16 +61,31 @@ public class PlayerHealth : MonoBehaviour
 
         StopAllCoroutines();
 
+        SpawnDeathBody();
+
         if (useRespawnPoint && respawnPoint != null)
-        {
             Respawn();
-        }
         else
-        {
-            // Reload current scene
             UnityEngine.SceneManagement.SceneManager.LoadScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void SpawnDeathBody()
+    {
+        if (deathBodyPrefab == null) return;
+
+        GameObject body = Instantiate(deathBodyPrefab, transform.position, transform.rotation);
+
+        // Pass velocity to the body
+        if (_rb != null)
+        {
+            Rigidbody2D bodyRb = body.GetComponent<Rigidbody2D>();
+            if (bodyRb != null)
+                bodyRb.velocity = _rb.velocity * bodyMomentumMultiplier;
         }
+
+        // UNCOMMENT IF USING SCENE RELOAD ONLY so it survives if you want it to persist
+        // DontDestroyOnLoad(body);
     }
 
     private void Respawn()
@@ -83,13 +104,12 @@ public class PlayerHealth : MonoBehaviour
     {
         _isInvincible = true;
 
-        // Flash the sprite while invincible
         if (spriteRenderer != null)
         {
             float elapsed = 0f;
             while (elapsed < invincibilityDuration)
             {
-                spriteRenderer.color = new Color(1f, 0.3f, 0.3f, 0.5f); // red tint
+                spriteRenderer.color = new Color(1f, 0.3f, 0.3f, 0.5f);
                 yield return new WaitForSeconds(0.1f);
                 spriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(0.1f);

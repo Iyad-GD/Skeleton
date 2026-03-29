@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bac8daf634a2c040927c661293d272b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathKey: 114
   Controller: {fileID: 300717813}
   RunSpeed: 60
 --- !u!114 &300717818
@@ -409,6 +410,8 @@ MonoBehaviour:
   maxHealth: 3
   useRespawnPoint: 1
   respawnPoint: {fileID: 166894840}
+  deathBodyPrefab: {fileID: 3596777407932319047, guid: 2ca70010ad08c2a49bc9610708722dd3, type: 3}
+  bodyMomentumMultiplier: 1
   invincibilityDuration: 0.5
   spriteRenderer: {fileID: 0}
 --- !u!1 &519420028
