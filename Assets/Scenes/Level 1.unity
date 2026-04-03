@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 535463647}
   - component: {fileID: 535463646}
   - component: {fileID: 535463645}
+  - component: {fileID: 535463648}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -214,6 +215,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535463648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535463644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1540242245
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,25 +360,25 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 3.4e-44
+      e00: 5.38e-43
       e01: 0
-      e02: -1.923535e+38
-      e03: -3.7500038
+      e02: 79.354004
+      e03: -1.0285598e-38
       e10: 0
       e11: 0
-      e12: 1.32e-43
-      e13: 7.7e-43
-      e20: -1.3379238e-34
-      e21: 0.00025052577
-      e22: 9.5573166e-29
-      e23: 0.00022840267
-      e30: 4.5905e-41
-      e31: 7.74e-43
-      e32: 7.71e-43
-      e33: 7.71e-43
+      e12: 8.8e-44
+      e13: 6.74e-43
+      e20: -3.020445e-11
+      e21: 0.5225668
+      e22: 9.218488e-29
+      e23: 2.27459e-40
+      e30: 4.5904e-41
+      e31: 6.8e-43
+      e32: 6.75e-43
+      e33: 6.78e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 4.0845e-41, g: 4.0845e-41, b: 4.0845e-41, a: 4.0845e-41}
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -397,7 +442,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1540242246}
