@@ -1,13 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Attach to a tile/platform. It cracks progressively as the player
-/// stands on it, then collapses. It can optionally respawn after a delay.
-/// 
+
 /// Setup: assign sprites for each crack stage in the Inspector
-/// (e.g. intact → cracked → very cracked → broken).
-/// </summary>
 public class BreakableTile : MonoBehaviour
 {
     [Header("Crack Stages")]

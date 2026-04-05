@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Attach to any object the player can pick up and throw.
-/// Works alongside CarrySystem on the player.
-/// </summary>
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class Carriable : MonoBehaviour
@@ -68,7 +65,7 @@ public class Carriable : MonoBehaviour
 
             Debug.Log($"[Carriable] '{gameObject.name}' hit '{col.gameObject.name}' at speed {speed:F1}");
 
-            // You can hook into other scripts here, e.g.:
+            // hook into other scripts here:
             // col.gameObject.GetComponent<BreakableTile>()?.Hit();
         }
 

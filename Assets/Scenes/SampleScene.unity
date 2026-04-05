@@ -1221,13 +1221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba62742f8a268f6448ed8cbff514bc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crackSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  timePerStage: 0.4
-  respawnDelay: 3
-  shakeAmount: 0.05
+  crackSprites: []
+  timePerStage: 1.2
+  respawnDelay: 4
+  shakeAmount: 0.2
   playerTag: Player
 --- !u!212 &1661461219
 SpriteRenderer:
@@ -1269,7 +1266,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8a8849b7b8b964564b9e89cb1ded0658, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

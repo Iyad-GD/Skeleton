@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Attach to the Player. Lets the player pick up, carry, and throw
-/// any GameObject that has the Carriable component.
-/// </summary>
+
 public class CarrySystem : MonoBehaviour
 {
     [Header("Carry Settings")]
