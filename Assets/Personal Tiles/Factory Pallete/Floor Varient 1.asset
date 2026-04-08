@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Door
+  m_Name: Floor Varient 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -469693201, guid: 838f6fd6dbb760d459b7252517b420cd, type: 3}
+  m_Sprite: {fileID: 449010874, guid: 838f6fd6dbb760d459b7252517b420cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
