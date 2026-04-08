@@ -688,8 +688,8 @@ GameObject:
   - component: {fileID: 513482745}
   - component: {fileID: 513482744}
   - component: {fileID: 513482743}
-  - component: {fileID: 513482741}
   - component: {fileID: 513482740}
+  - component: {fileID: 513482741}
   - component: {fileID: 513482748}
   m_Layer: 3
   m_Name: Player
@@ -947,6 +947,7 @@ GameObject:
   - component: {fileID: 535463646}
   - component: {fileID: 535463645}
   - component: {fileID: 535463648}
+  - component: {fileID: 535463649}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1072,6 +1073,30 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &535463649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535463644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d52f51cf62c2034492bb209cf22e385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 513482747}
+  smoothSpeed: 5
+  offset: {x: 0, y: 1}
+  lookaheadDistance: 2
+  lookaheadSpeed: 3
+  deadzoneX: 0.5
+  deadzoneY: 0.3
+  useBounds: 0
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!1 &607818128
 GameObject:
   m_ObjectHideFlags: 0
