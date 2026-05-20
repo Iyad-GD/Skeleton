@@ -3,9 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        MusicManager.Instance.PlayMusic("Main Menu");
+    }
+
+    public void Play()
+    {
+        MusicManager.Instance.PlayMusic("Main Menu");
+    }
     public void GoToScene()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void Settings()
+    {
+
     }
 
     public void QuitApp()
