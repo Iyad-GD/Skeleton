@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,37 +5,50 @@ public class PlayerMovement : MonoBehaviour
     PlayerHealth playerHealth;
 
     [Header("Settings")]
-
     [Tooltip("Key the player must press to die.")]
     public KeyCode deathKey = KeyCode.R;
 
     public CharacterController2D Controller;
     public Animator animator;
     float HorizonatalMove = 0f;
-    public float RunSpeed =40f ;
+    public float RunSpeed = 40f;
     bool jump = false;
 
+    private WallJump _wallJump;
 
-    // Start is called before the first frame update
     void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
+        _wallJump = GetComponent<WallJump>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        HorizonatalMove = Input.GetAxisRaw("Horizontal") * RunSpeed;
+        // Don't override horizontal input during wall jump lockout
+        if (_wallJump == null || !_wallJump.ControlLocked)
+            HorizonatalMove = Input.GetAxisRaw("Horizontal") * RunSpeed;
+        else
+            HorizonatalMove = 0f;
+
         animator.SetFloat("Speed", Mathf.Abs(HorizonatalMove));
+
         if (Input.GetButtonDown("Jump"))
         {
-            jump = true;
-            animator.SetBool("IsJumping", true);    
+            // Wall jump takes priority over normal jump
+            if (_wallJump != null && _wallJump.IsWallSliding)
+            {
+                _wallJump.TriggerWallJump();
+                animator.SetBool("IsJumping", true);
+            }
+            else
+            {
+                jump = true;
+                animator.SetBool("IsJumping", true);
+            }
         }
+
         if (Input.GetKeyDown(deathKey))
-        {
             playerHealth.Die();
-        }
     }
 
     public void OnLanding()
@@ -47,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Controller.Move (HorizonatalMove * Time.fixedDeltaTime, false, jump);
+        Controller.Move(HorizonatalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 }

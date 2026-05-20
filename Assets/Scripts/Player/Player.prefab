@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9059535535609226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2413031353380144736}
+  m_Layer: 3
+  m_Name: Wall check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2413031353380144736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059535535609226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.86, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3897007778369207662}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860922120109115272
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,9 +72,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3897007778369207662}
   - component: {fileID: 5098211973033878694}
-  - component: {fileID: 4272211369229853072}
-  - component: {fileID: 5581081435004176115}
+  - component: {fileID: 162171453302499762}
+  - component: {fileID: 7330407232972078205}
   - component: {fileID: 2970087228471273933}
+  - component: {fileID: 7406015924514108193}
   - component: {fileID: 7549597480155146817}
   - component: {fileID: 3891158405171480312}
   - component: {fileID: 8942824989322391759}
@@ -69,6 +101,7 @@ Transform:
   m_Children:
   - {fileID: 8828131888061288186}
   - {fileID: 8019135481243841782}
+  - {fileID: 2413031353380144736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5098211973033878694
@@ -123,7 +156,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4272211369229853072
+--- !u!114 &162171453302499762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,35 +168,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f509de38b77464ca8a58c89ecfa05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 1200
+  m_JumpForce: 550
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
-  m_AirControl: 1
+  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1015
   m_GroundCheck: {fileID: 8019135481243841782}
   m_CeilingCheck: {fileID: 8828131888061288186}
   m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5581081435004176115}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnLanding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5581081435004176115
+--- !u!114 &7330407232972078205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathKey: 114
-  Controller: {fileID: 4272211369229853072}
+  Controller: {fileID: 162171453302499762}
   animator: {fileID: 8942824989322391759}
   RunSpeed: 40
 --- !u!50 &2970087228471273933
@@ -206,6 +227,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &7406015924514108193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364891181829447638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d2aab75ccfbd04cbe7d33b4450c8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallCheckDistance: 0.35
+  wallCheck: {fileID: 2413031353380144736}
+  wallSlideSpeed: 1.5
+  wallJumpForceX: 8
+  wallJumpForceY: 14
+  wallJumpControlLockout: 0.2
 --- !u!61 &7549597480155146817
 BoxCollider2D:
   m_ObjectHideFlags: 0
