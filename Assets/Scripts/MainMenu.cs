@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         MusicManager.Instance.PlayMusic("Main Menu");
+        Debug.Log("WORKING");
     }
 
     public void Play()
