@@ -30,6 +30,9 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth { get; private set; }
     private bool _isInvincible = false;
     private Rigidbody2D _rb;
+    private Animator _animator;
+    private bool _isDead = false;
+    private Coroutine _invincibilityCoroutine;
 
     private void Awake()
     {
@@ -39,11 +42,12 @@ public class PlayerHealth : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amount)
     {
-        if (_isInvincible) return;
+        if (_isInvincible || _isDead) return;
 
         CurrentHealth -= amount;
         Debug.Log($"[PlayerHealth] Took {amount} damage. Health: {CurrentHealth}/{maxHealth}");
@@ -51,17 +55,71 @@ public class PlayerHealth : MonoBehaviour
         if (CurrentHealth <= 0)
             Die();
         else
-            StartCoroutine(InvincibilityRoutine());
+        {
+            if (_invincibilityCoroutine != null)
+                StopCoroutine(_invincibilityCoroutine);
+            _invincibilityCoroutine = StartCoroutine(InvincibilityRoutine());
+        }
     }
 
     public void Die()
     {
+        if (_isDead) return;
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        _isDead = true;
         Debug.Log("[PlayerHealth] Player died.");
         CurrentHealth = 0;
 
-        StopAllCoroutines();
+        // Stop invincibility flashing
+        if (_invincibilityCoroutine != null)
+        {
+            StopCoroutine(_invincibilityCoroutine);
+            _invincibilityCoroutine = null;
+        }
 
-        SpawnDeathBody();
+        // Cache velocity before stopping Rigidbody
+        Vector2 deathVelocity = Vector2.zero;
+        if (_rb != null)
+        {
+            deathVelocity = _rb.velocity;
+        }
+
+        // Trigger the death animation
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Die");
+        }
+
+        // Disable player movement and control
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        if (movement != null)
+        {
+            movement.enabled = false;
+        }
+
+        // Stop Rigidbody velocity and make it static during death sequence
+        if (_rb != null)
+        {
+            _rb.velocity = Vector2.zero;
+            _rb.bodyType = RigidbodyType2D.Static;
+        }
+
+        // Disable collision to avoid getting hit further or blocking enemies
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
+
+        // Wait for the slime_die animation to complete (duration is 1.2s)
+        yield return new WaitForSeconds(1.2f);
+
+        // Spawn death corpse
+        SpawnDeathBody(deathVelocity);
 
         if (useRespawnPoint && respawnPoint != null)
             Respawn();
@@ -70,18 +128,17 @@ public class PlayerHealth : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void SpawnDeathBody()
+    private void SpawnDeathBody(Vector2 velocity)
     {
         if (deathBodyPrefab == null) return;
 
         GameObject body = Instantiate(deathBodyPrefab, transform.position, transform.rotation);
 
         // Pass velocity to the body
-        if (_rb != null)
+        Rigidbody2D bodyRb = body.GetComponent<Rigidbody2D>();
+        if (bodyRb != null)
         {
-            Rigidbody2D bodyRb = body.GetComponent<Rigidbody2D>();
-            if (bodyRb != null)
-                bodyRb.velocity = _rb.velocity * bodyMomentumMultiplier;
+            bodyRb.velocity = velocity * bodyMomentumMultiplier;
         }
 
         // UNCOMMENT IF USING SCENE RELOAD ONLY so it survives if you want it to persist
@@ -93,9 +150,38 @@ public class PlayerHealth : MonoBehaviour
         transform.position = respawnPoint.position;
         CurrentHealth = maxHealth;
         _isInvincible = false;
+        _isDead = false;
+
+        // Re-enable player movement and control
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        if (movement != null)
+        {
+            movement.enabled = true;
+        }
+
+        // Restore Rigidbody settings
+        if (_rb != null)
+        {
+            _rb.bodyType = RigidbodyType2D.Dynamic;
+            _rb.velocity = Vector2.zero;
+        }
+
+        // Re-enable collision
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = true;
+        }
 
         if (spriteRenderer != null)
             spriteRenderer.color = Color.white;
+
+        // Reset Animator states
+        if (_animator != null)
+        {
+            _animator.Rebind();
+            _animator.Update(0f);
+        }
 
         Debug.Log("[PlayerHealth] Player respawned.");
     }
@@ -124,5 +210,4 @@ public class PlayerHealth : MonoBehaviour
 
         _isInvincible = false;
     }
-
 }
