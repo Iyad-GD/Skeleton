@@ -11,6 +11,11 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioSource musicSource;
 
+    private float masterVolume = 1f;
+    private float musicVolume = 1f;
+    private float fadeVolumeFactor = 1f;
+    private Coroutine crossfadeCoroutine;
+
     private void Awake()
     {
         if (Instance != null)
@@ -24,18 +29,52 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Load initial volume settings from PlayerPrefs
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        UpdateVolume();
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = volume;
+        UpdateVolume();
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        UpdateVolume();
+    }
+
+    private void UpdateVolume()
+    {
+        if (musicSource != null)
+        {
+            musicSource.volume = fadeVolumeFactor * masterVolume * musicVolume;
+        }
+    }
+
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
-        StartCoroutine(AnimateMusicCrossFade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+        if (crossfadeCoroutine != null)
+        {
+            StopCoroutine(crossfadeCoroutine);
+        }
+        crossfadeCoroutine = StartCoroutine(AnimateMusicCrossFade(musicLibrary.GetClipFromName(trackName), fadeDuration));
     }
 
     IEnumerator AnimateMusicCrossFade(AudioClip nextTrack, float fadeDuration = 0.5f)
     {
         float percent = 0;
+        float startFadeFactor = fadeVolumeFactor;
         while (percent < 1)
         {
             percent += Time.deltaTime * 1 / fadeDuration;
-            musicSource.volume = Mathf.Lerp(1f, 0, percent);
+            fadeVolumeFactor = Mathf.Lerp(startFadeFactor, 0, percent);
+            UpdateVolume();
             yield return null;
         }
         musicSource.clip = nextTrack;
@@ -45,8 +84,10 @@ public class MusicManager : MonoBehaviour
         while (percent < 1)
         {
             percent += Time.deltaTime * 1 / fadeDuration;
-            musicSource.volume = Mathf.Lerp(0, 1f, percent);
+            fadeVolumeFactor = Mathf.Lerp(0, 1f, percent);
+            UpdateVolume();
             yield return null;
         }
+        crossfadeCoroutine = null;
     }
 }

@@ -10,6 +10,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource sfx2DSources;
 
+    private float masterVolume = 1f;
+    private float sfxVolume = 1f;
+
     private void Awake()
     {
         if (Instance != null)
@@ -23,11 +26,39 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Load initial volume settings from PlayerPrefs
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        UpdateVolume();
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = volume;
+        UpdateVolume();
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
+        UpdateVolume();
+    }
+
+    private void UpdateVolume()
+    {
+        if (sfx2DSources != null)
+        {
+            sfx2DSources.volume = masterVolume * sfxVolume;
+        }
+    }
+
     public void PlaySound3D(AudioClip clip, Vector3 pos)
     {
         if (clip != null)
         {
-            AudioSource.PlayClipAtPoint(clip, pos);
+            AudioSource.PlayClipAtPoint(clip, pos, masterVolume * sfxVolume);
         }
     }
     public void PlaySound3D(string soundName, Vector3 pos)
@@ -36,6 +67,13 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySound2D(string soundName)
     {
-        sfx2DSources.PlayOneShot(sfxLibrary.GetClipFromName(soundName));
+        if (sfxLibrary != null)
+        {
+            AudioClip clip = sfxLibrary.GetClipFromName(soundName);
+            if (clip != null && sfx2DSources != null)
+            {
+                sfx2DSources.PlayOneShot(clip);
+            }
+        }
     }
 }

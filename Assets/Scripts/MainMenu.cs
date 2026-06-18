@@ -3,16 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Panels")]
+    public GameObject mainMenuPanel;
+    public GameObject settingsPanel;
+
     private void Start()
     {
-        MusicManager.Instance.PlayMusic("Main Menu");
-        Debug.Log("WORKING");
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayMusic("Main Menu");
+        }
+
+        // Ensure initial panel visibility states
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
     }
 
     public void Play()
     {
-        MusicManager.Instance.PlayMusic("Main Menu");
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayMusic("Main Menu");
+        }
     }
+
     public void GoToScene()
     {
         SceneManager.LoadScene(1);
@@ -20,7 +34,14 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+    }
 
+    public void BackToMainMenu()
+    {
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
     }
 
     public void QuitApp()
@@ -28,5 +49,4 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Application Quit UWU");
     }
-
 }
