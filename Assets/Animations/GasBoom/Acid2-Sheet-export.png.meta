@@ -1,0 +1,338 @@
+fileFormatVersion: 2
+guid: c1e1a3fe6d141634f81f154bff695f0d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_9
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 89
+        width: 293
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64aee097021a86b4a81e35c0846e2337
+      internalID: -1315975708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_10
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 77
+        width: 336
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bd5280b4f6abf459cd214484402cf7
+      internalID: -280055857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_14
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 61
+        width: 386
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ccb0284bfd3ae94585b2304da1fc61f
+      internalID: -713636014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_21
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 118
+        width: 256
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee6dc783ab74f747a441e3fe5de19c7
+      internalID: -226303842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_53
+      rect:
+        serializedVersion: 2
+        x: 3708
+        y: 19
+        width: 473
+        height: 490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20477dd028b94a4a9d80ca41e3204b4
+      internalID: -1129521992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Acid2-Sheet-export_67
+      rect:
+        serializedVersion: 2
+        x: 3005
+        y: 35
+        width: 438
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a780321801d5b7c458a258411c8d92fe
+      internalID: 855594866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Acid2-Sheet-export_0: -1310830915
+      Acid2-Sheet-export_1: 840658962
+      Acid2-Sheet-export_10: -280055857
+      Acid2-Sheet-export_11: 1355804850
+      Acid2-Sheet-export_12: -119415974
+      Acid2-Sheet-export_13: -231892692
+      Acid2-Sheet-export_14: -713636014
+      Acid2-Sheet-export_15: -1300621362
+      Acid2-Sheet-export_16: -1092829966
+      Acid2-Sheet-export_17: 1102688562
+      Acid2-Sheet-export_18: 363010777
+      Acid2-Sheet-export_19: 1713535696
+      Acid2-Sheet-export_2: -640628702
+      Acid2-Sheet-export_20: -570083291
+      Acid2-Sheet-export_21: -226303842
+      Acid2-Sheet-export_22: -772929602
+      Acid2-Sheet-export_23: 1292132776
+      Acid2-Sheet-export_24: 1376360449
+      Acid2-Sheet-export_25: -1369784457
+      Acid2-Sheet-export_26: 1677097882
+      Acid2-Sheet-export_27: -676552764
+      Acid2-Sheet-export_28: -1992524558
+      Acid2-Sheet-export_29: -483232771
+      Acid2-Sheet-export_3: 154983559
+      Acid2-Sheet-export_30: -941257754
+      Acid2-Sheet-export_31: -747495158
+      Acid2-Sheet-export_32: -1364860785
+      Acid2-Sheet-export_33: -602183229
+      Acid2-Sheet-export_34: 669316225
+      Acid2-Sheet-export_35: 1325399723
+      Acid2-Sheet-export_36: 60659301
+      Acid2-Sheet-export_37: 1884512604
+      Acid2-Sheet-export_38: 1034201495
+      Acid2-Sheet-export_39: -814688101
+      Acid2-Sheet-export_4: -957678949
+      Acid2-Sheet-export_40: -283123389
+      Acid2-Sheet-export_41: -1415515694
+      Acid2-Sheet-export_42: -1500057549
+      Acid2-Sheet-export_43: -1017125007
+      Acid2-Sheet-export_44: 181623230
+      Acid2-Sheet-export_45: -622842192
+      Acid2-Sheet-export_46: -1259848563
+      Acid2-Sheet-export_47: -240278678
+      Acid2-Sheet-export_48: -1833904459
+      Acid2-Sheet-export_49: 15341203
+      Acid2-Sheet-export_5: 1222229189
+      Acid2-Sheet-export_50: 1769704110
+      Acid2-Sheet-export_51: 743629570
+      Acid2-Sheet-export_52: -809157150
+      Acid2-Sheet-export_53: -1129521992
+      Acid2-Sheet-export_54: 387384597
+      Acid2-Sheet-export_55: -888153430
+      Acid2-Sheet-export_56: -975218323
+      Acid2-Sheet-export_57: -694692927
+      Acid2-Sheet-export_58: -17225203
+      Acid2-Sheet-export_59: -1999588208
+      Acid2-Sheet-export_6: 2040460410
+      Acid2-Sheet-export_60: -841067872
+      Acid2-Sheet-export_61: 1175517917
+      Acid2-Sheet-export_62: -2016298430
+      Acid2-Sheet-export_63: 443511841
+      Acid2-Sheet-export_64: 1197335899
+      Acid2-Sheet-export_65: -451347588
+      Acid2-Sheet-export_66: 1125818670
+      Acid2-Sheet-export_67: 855594866
+      Acid2-Sheet-export_68: -826007428
+      Acid2-Sheet-export_69: -694728614
+      Acid2-Sheet-export_7: 22778233
+      Acid2-Sheet-export_70: -194343079
+      Acid2-Sheet-export_71: 1305026865
+      Acid2-Sheet-export_8: 1692737329
+      Acid2-Sheet-export_9: -1315975708
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
