@@ -23,11 +23,24 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("Seconds of invincibility after taking damage (prevents rapid multi-hits).")]
     public float invincibilityDuration = 0.5f;
 
+    [Header("Lives")]
+    [Tooltip("Number of lives the player starts with.")]
+    public int maxLives = 3;
+
+    [Header("Game Over UI")]
+    [Tooltip("Optional panel to show when game is over.")]
+    public GameObject gameOverPanel;
+    [Tooltip("Delay in seconds before reloading scene on game over.")]
+    public float gameOverReloadDelay = 3f;
+
     [Header("Visual Feedback (optional)")]
     [Tooltip("SpriteRenderer to flash when hurt. Leave empty to skip.")]
     public SpriteRenderer spriteRenderer;
 
     public int CurrentHealth { get; private set; }
+    public int CurrentLives { get; private set; }
+    public event System.Action<int> OnLivesChanged;
+
     private bool _isInvincible = false;
     private Rigidbody2D _rb;
     private Animator _animator;
@@ -37,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         CurrentHealth = maxHealth;
+        CurrentLives = maxLives;
 
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -81,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
             _invincibilityCoroutine = null;
         }
 
-        // Cache velocity before stopping Rigidbody
+        // Cache velocity 
         Vector2 deathVelocity = Vector2.zero;
         if (_rb != null)
         {
@@ -101,7 +115,7 @@ public class PlayerHealth : MonoBehaviour
             movement.enabled = false;
         }
 
-        // Stop Rigidbody velocity and make it static during death sequence
+        
         if (_rb != null)
         {
             _rb.velocity = Vector2.zero;
@@ -115,17 +129,34 @@ public class PlayerHealth : MonoBehaviour
             col.enabled = false;
         }
 
-        // Wait for the slime_die animation to complete (duration is 1.2s)
+        // Wait for the slime_die (duration is 1.2s)
         yield return new WaitForSeconds(1.2f);
 
-        // Spawn death corpse
+        
         SpawnDeathBody(deathVelocity);
 
-        if (useRespawnPoint && respawnPoint != null)
-            Respawn();
+        CurrentLives--;
+        OnLivesChanged?.Invoke(CurrentLives);
+
+        if (CurrentLives > 0)
+        {
+            if (useRespawnPoint && respawnPoint != null)
+                Respawn();
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
         else
+        {
+            Debug.Log("[PlayerHealth] Game Over - Out of Lives.");
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true);
+            }
+            yield return new WaitForSeconds(gameOverReloadDelay);
             UnityEngine.SceneManagement.SceneManager.LoadScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void SpawnDeathBody(Vector2 velocity)
@@ -134,7 +165,7 @@ public class PlayerHealth : MonoBehaviour
 
         GameObject body = Instantiate(deathBodyPrefab, transform.position, transform.rotation);
 
-        // Pass velocity to the body
+        // Pass velocity
         Rigidbody2D bodyRb = body.GetComponent<Rigidbody2D>();
         if (bodyRb != null)
         {
