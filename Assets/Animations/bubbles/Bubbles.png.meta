@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6bc10d2728e1d5042afa9c3bcf5314b7
+guid: d06b5eee02b30de4783888c8b3ce5062
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Card_0
+      name: Bubbles_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 6
-        width: 12
-        height: 11
+        x: 37
+        y: 0
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,41 +137,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eec6edd76fcc7b244a25a14066c08c12
-      internalID: 2035436946
+      spriteID: ceeb1ef3b7874bd449e3920aff750f8a
+      internalID: -1538428676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_1
+      name: Bubbles_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eca3adf9cb2cee4abf28f3bbc8fd64a
+      internalID: -1121652899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubbles_2
       rect:
         serializedVersion: 2
         x: 31
-        y: 7
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba02e5ebf17bf6d4aa38071b46bf8a5e
-      internalID: 1824518774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Card_2
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 8
+        y: 0
         width: 4
-        height: 11
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e162b8e4d97cc7645a6848bc54760837
-      internalID: -41233289
+      spriteID: a4174034067dd344a8219d4ed55534d7
+      internalID: 767150253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_3
+      name: Bubbles_3
       rect:
         serializedVersion: 2
-        x: 79
-        y: 8
-        width: 8
-        height: 11
+        x: 26
+        y: 0
+        width: 3
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97db481004aa9fb49b02a15289cf6834
-      internalID: 626441248
+      spriteID: f9bc52187b7fa9942913a78e9cdf5000
+      internalID: 1231315271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_4
+      name: Bubbles_4
       rect:
         serializedVersion: 2
-        x: 101
-        y: 7
-        width: 12
-        height: 11
+        x: 20
+        y: 0
+        width: 3
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,71 +221,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c92355b6ebe42b47999c9ff2778ae26
-      internalID: 682913183
+      spriteID: f279bcffacf1972409b321c2e8f26e4b
+      internalID: -1932416945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_5
+      name: Bubbles_5
       rect:
         serializedVersion: 2
-        x: 127
-        y: 6
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 14
+        y: 0
+        width: 2
+        height: 2
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.95122796}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013c937925937d844abc194be805d270
-      internalID: -326165336
+      spriteID: eab6f46dca00d274d9145ead13b54a69
+      internalID: -346461102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_6
+      name: Bubbles_6
       rect:
         serializedVersion: 2
-        x: 153
-        y: 5
-        width: 4
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 8
+        y: 0
+        width: 2
+        height: 1
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.95122796}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbb0c309bf59bcf44ac1e05ff971d792
-      internalID: -706954116
+      spriteID: ef50caf0e5d9e914fb0a322c59248548
+      internalID: -982700882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Card_7
+      name: Bubbles_7
       rect:
         serializedVersion: 2
-        x: 175
-        y: 6
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3
+        y: 0
+        width: 1
+        height: 1
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.95122796}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5043b063b72c0984ca881f6ab5265a6f
-      internalID: -1895083235
+      spriteID: 8422dde6e77f64145b1e9bb29619596f
+      internalID: -592198522
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Card_0: 2035436946
-      Card_1: 1824518774
-      Card_2: -41233289
-      Card_3: 626441248
-      Card_4: 682913183
-      Card_5: -326165336
-      Card_6: -706954116
-      Card_7: -1895083235
+      Bubbles_0: -1538428676
+      Bubbles_1: -1121652899
+      Bubbles_2: 767150253
+      Bubbles_3: 1231315271
+      Bubbles_4: -1932416945
+      Bubbles_5: -346461102
+      Bubbles_6: -982700882
+      Bubbles_7: -592198522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
