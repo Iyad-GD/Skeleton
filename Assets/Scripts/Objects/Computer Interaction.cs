@@ -116,7 +116,7 @@ public class ComputerInteraction : MonoBehaviour
             promptKeyReady.SetActive(false);
     }
 
-    // Beautiful retro OnGUI fallback if custom UI prompts are not set up
+    
     private void OnGUI()
     {
         if (_playerNearby && promptKeyNeeded == null && promptKeyReady == null)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+
     [Header("Health")]
     public int maxHealth = 3;
 
@@ -49,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+
         CurrentHealth = maxHealth;
         CurrentLives = maxLives;
 

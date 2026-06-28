@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     PlayerHealth playerHealth;
+    public static bool IsMovementLocked { get; set; } = false;
 
     [Header("Settings")]
     [Tooltip("Key the player must press to die.")]
@@ -20,10 +21,27 @@ public class PlayerMovement : MonoBehaviour
     {
         playerHealth = GetComponent<PlayerHealth>();
         _wallJump = GetComponent<WallJump>();
+
+        // Reset lock state whenever a new scene starts
+        IsMovementLocked = false;
+
+        playerHealth = GetComponent<PlayerHealth>();
+        _wallJump = GetComponent<WallJump>();
     }
 
     void Update()
     {
+        if (IsMovementLocked)
+        {
+            HorizonatalMove = 0f;
+            jump = false;
+            animator.SetFloat("Speed", 0f);
+            return;
+        }
+        //Keep Eyes here
+        if (_wallJump == null || !_wallJump.ControlLocked)
+            HorizonatalMove = Input.GetAxisRaw("Horizontal") * RunSpeed;
+
         // Don't override horizontal input during wall jump lockout
         if (_wallJump == null || !_wallJump.ControlLocked)
             HorizonatalMove = Input.GetAxisRaw("Horizontal") * RunSpeed;
